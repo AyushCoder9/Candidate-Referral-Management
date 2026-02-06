@@ -7,14 +7,14 @@ import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   const [candidates, setCandidates] = useState([]);
-  const [filteredCandidates, setFilteredCandidates] = useState([]); // [FILTER]
+  const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [jobFilter, setJobFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [showForm, setShowForm] = useState(false);
 
   const { user } = useContext(AuthContext);
 
-  const fetchCandidates = async () => {
+  const fetchCandidates = useCallback(async () => {
     try {
       const config = {
         headers: {
@@ -31,7 +31,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error("Error fetching candidates", error);
     }
-  };
+  }, [user.token]);
 
   const deleteCandidate = async (id) => {
     if (window.confirm("Are you sure you want to delete this candidate?")) {
@@ -55,11 +55,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchCandidates();
-    // eslint-disable-next-line
-  }, []);
+  }, [fetchCandidates]);
 
   useEffect(() => {
-    // Filter logic
     let result = candidates;
 
     if (jobFilter) {

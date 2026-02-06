@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-dotenv.config(); // Load env vars before imports
+dotenv.config();
 
 const cors = require("cors");
 const connectDB = require("./config/db");
@@ -29,4 +29,3 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-// Ensure Port is set correctly for deployment

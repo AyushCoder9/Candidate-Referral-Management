@@ -60,7 +60,7 @@ const ReferralForm = ({ onCandidateAdded }) => {
       setSuccess("Referral submitted successfully!");
       setFormData({ name: "", email: "", phone: "", jobTitle: "" });
       setResume(null);
-      // Reset file input manually if needed
+
       document.getElementById("resume").value = "";
 
       if (onCandidateAdded) onCandidateAdded();
