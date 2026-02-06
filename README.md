@@ -4,12 +4,12 @@ A full-stack application for managing candidate referrals, built with the MERN s
 
 ## a. Features Implemented
 
-- **Authentication**: Secure recruiter login/registration (JWT-based).
+- **Authentication**: Secure recruiter login (JWT-based). _Registration is handled internally via API._
 - **Referral Management**: Add, view, and delete candidate referrals.
 - **Resume Handling**: Securely upload and store resumes on AWS S3 with Pre-signed URL access.
 - **Dashboard**: Filter candidates by job title or status (Pending, Reviewed, Hired, Rejected).
 - **Security**: Protected API routes and secure file access.
-- **responsive Design**: Fully responsive UI for desktop and mobile.
+- **Responsive Design**: Fully responsive UI for desktop and mobile.
 
 ## b. Steps to Run Locally
 
@@ -84,6 +84,13 @@ The app will run at `http://localhost:3000`.
 3.  **Resume Format**: Only PDF files are supported for resume uploads.
 4.  **AWS S3**: The application assumes valid AWS credentials are provided. If running locally without AWS keys, upload functionality will fail.
 5.  **Single User Role**: Currently, the system supports a single 'Recruiter' role. Multi-tenant or Admin/User role separation is a future enhancement.
+
+## d. API Reference
+
+- `POST /api/auth/login`: Login user. (Default PORT: 5001)
+- `POST /api/auth/register`: Create new user (**Internal/Admin tool only, no UI**).
+- `GET /api/candidates`: Fetch all candidates.
+- `POST /api/candidates`: Create a referral.
 
 ## Tech Stack
 
