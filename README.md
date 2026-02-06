@@ -2,43 +2,40 @@
 
 A full-stack application for managing candidate referrals, built with the MERN stack (MongoDB, Express, React, Node.js) and AWS S3 for resume storage.
 
-## Features
+## a. Features Implemented
 
 - **Authentication**: Secure recruiter login/registration (JWT-based).
 - **Referral Management**: Add, view, and delete candidate referrals.
 - **Resume Handling**: Securely upload and store resumes on AWS S3 with Pre-signed URL access.
 - **Dashboard**: Filter candidates by job title or status (Pending, Reviewed, Hired, Rejected).
 - **Security**: Protected API routes and secure file access.
+- **responsive Design**: Fully responsive UI for desktop and mobile.
 
-## Technology Stack
+## b. Steps to Run Locally
 
-### Backend
-
-- **Node.js**: Runtime environment.
-- **Express.js**: Web framework.
-- **MongoDB**: Database for storing user and candidate data.
-- **Mongoose**: ODM for MongoDB.
-- **AWS SDK**: For S3 file storage interactions.
-- **JSON Web Token (JWT)**: For secure authentication.
-
-### Frontend
-
-- **React**: UI library.
-- **React Router**: For client-side routing.
-- **Axios**: For HTTP requests.
-- **CSS3**: Custom styling.
-
-## Prerequisites
-
-Before running the application locally, ensure you have the following installed:
+### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v14+)
 - [MongoDB](https://www.mongodb.com/) (Local or Atlas)
 - AWS Account (with S3 bucket and IAM credentials)
 
-## Environment Configuration
+### 1. Clone the Repository
 
-Create a `.env` file in the `backend` directory with the following variables:
+```bash
+git clone https://github.com/AyushCoder9/Candidate-Referral-Management.git
+cd Candidate-Referral-Management
+```
+
+### 2. Backend Setup
+
+Navigate to the `backend` directory and install dependencies:
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file in the `backend` directory:
 
 ```env
 PORT=5001
@@ -51,56 +48,46 @@ AWS_BUCKET_NAME=your_s3_bucket_name
 FRONTEND_URL=http://localhost:3000
 ```
 
+Start the backend server:
+
+```bash
+npm run dev
+```
+
+### 3. Frontend Setup
+
+Open a new terminal, navigate to the `frontend` directory, and install dependencies:
+
+```bash
+cd ../frontend
+npm install
+```
+
 Create a `.env` file in the `frontend` directory:
 
 ```env
 REACT_APP_API_URL=http://localhost:5001
 ```
 
-## Installation & Running Locally
+Start the React application:
 
-1.  **Clone the repository**
+```bash
+npm start
+```
 
-    ```bash
-    git clone https://github.com/AyushCoder9/Candidate-Referral-Management.git
-    cd Candidate-Referral-Management
-    ```
+The app will run at `http://localhost:3000`.
 
-2.  **Install Dependencies**
+## c. Assumptions and Limitations
 
-    ```bash
-    # Backend
-    cd backend
-    npm install
+1.  **Render Cold Start**: The backend is hosted on Render's free tier. **Please wait 1-2 minutes for the initial request to process**, as the service spins down after inactivity. if the login fails initially, simply try again after a minute.
+2.  **Login Credentials**: Use the mock credentials displayed on the Login page to access the system (Username: `admin`, Password: `password123`).
+3.  **Resume Format**: Only PDF files are supported for resume uploads.
+4.  **AWS S3**: The application assumes valid AWS credentials are provided. If running locally without AWS keys, upload functionality will fail.
+5.  **Single User Role**: Currently, the system supports a single 'Recruiter' role. Multi-tenant or Admin/User role separation is a future enhancement.
 
-    # Frontend
-    cd ../frontend
-    npm install
-    ```
+## Tech Stack
 
-3.  **Start the Application**
-    Open two terminals:
-
-    Terminal 1 (Backend):
-
-    ```bash
-    cd backend
-    npm run dev
-    ```
-
-    Terminal 2 (Frontend):
-
-    ```bash
-    cd frontend
-    npm start
-    ```
-
-## Deployment
-
-### Backend (Render)
-
-The backend is configured to be deployed on [Render](https://render.com/). Ensure you set the environment variables in your Render dashboard matching your local `.env`.
-
-### Frontend (Vercel)
-
-The frontend is configured for deployment on [Vercel](https://vercel.com/). Add the `REACT_APP_API_URL` environment variable in your Vercel project settings pointing to your deployed backend URL.
+- **Frontend**: React.js, Context API, CSS.
+- **Backend**: Node.js, Express.js.
+- **Database**: MongoDB.
+- **Storage**: AWS S3.
