@@ -85,3 +85,6 @@ A production-ready MERN stack application for managing candidate referrals.
 - `POST /api/candidates`: Create a referral (Upload PDF).
 - `GET /api/candidates`: Get all candidates.
 - `PUT /api/candidates/:id/status`: Update candidate status.
+
+## Deployment
+See [Deployment Guide](deployment_guide.md)
