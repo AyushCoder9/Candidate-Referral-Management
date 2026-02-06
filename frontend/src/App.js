@@ -47,3 +47,4 @@ function App() {
 }
 
 export default App;
+// Main application routing configuration
