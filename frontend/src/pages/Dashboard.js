@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import CandidateCard from "../components/CandidateCard";
@@ -11,8 +11,18 @@ const Dashboard = () => {
   const [jobFilter, setJobFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [showForm, setShowForm] = useState(false);
-
   const { user } = useContext(AuthContext);
+
+  const calculateStats = (cands) => {
+    return {
+      total: cands.length,
+      pending: cands.filter((c) => c.status === "Pending").length,
+      reviewed: cands.filter((c) => c.status === "Reviewed").length,
+      hired: cands.filter((c) => c.status === "Hired").length,
+    };
+  };
+
+  const stats = calculateStats(candidates);
 
   const fetchCandidates = useCallback(async () => {
     try {
@@ -92,6 +102,25 @@ const Dashboard = () => {
           />
         </div>
       )}
+
+      <div className="metrics-grid">
+        <div className="stat-card">
+          <h3>Total Referrals</h3>
+          <p>{stats.total}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Pending</h3>
+          <p>{stats.pending}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Reviewed</h3>
+          <p>{stats.reviewed}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Hired</h3>
+          <p>{stats.hired}</p>
+        </div>
+      </div>
 
       <div className="filter-section" style={{ marginBottom: "2rem" }}>
         <input
