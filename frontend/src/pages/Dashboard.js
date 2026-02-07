@@ -86,14 +86,7 @@ const Dashboard = () => {
   return (
     <div className="container">
       <div className="dashboard-header">
-        <div className="header-left">
-          <img
-            src={`${process.env.PUBLIC_URL}/favicon.png`}
-            alt="Logo"
-            className="dashboard-logo"
-          />
-          <h1>Dashboard</h1>
-        </div>
+        <h1>Dashboard</h1>
         <button className="btn" onClick={() => setShowForm(!showForm)}>
           {showForm ? "Close Form" : "Add New Referral"}
         </button>
